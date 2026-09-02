@@ -9,14 +9,36 @@
             background-color: lightblue;
             font-family: 'Trebuchet MS', sans-serif;
             text-align: center;
+            margin: 0;
+            padding-bottom: 50px;
+            overflow: hidden; /* Prevents scrollbars when objects bounce */
+            user-select: none;
         }
-<!-- i choose this font and centered because it and is artistic expression of avant garde -->
+
+        #drop-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff4757;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+        }
+
+        #drop-btn:hover { background-color: #ff6b81; }
+
         img {
             display: block;
             margin: auto;
+            pointer-events: none; /* Prevents default browser image drag */
         }
 
-        
         .avant-garde-box {
             border: 3px dashed #333;
             padding: 10px;
@@ -24,57 +46,235 @@
             display: inline-block;
             background-color: rgba(255, 255, 255, 0.4);
         }
+
+        /* Class applied to elements when turned into physics objects */
+        .physics-element {
+            position: fixed !important;
+            margin: 0 !important;
+            will-change: transform;
+            z-index: 100;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .physics-element:active {
+            cursor: grabbing;
+        }
     </style>
 </head>
 
 <body>
- 
+
+    <button id="drop-btn" onclick="dropThePage()">click for funni</button>
+
     <h1>This is a nothing burger page</h1>
 
     <p>This is filler :(</p>
 
     <div class="avant-garde-box">
-        <img src="https://i.pinimg.com/originals/c1/53/a1/c153a1c5d9c67c36386919ffcb483651.jpg"
-             alt="" width="300" height="200">
+        <img src="https://i.pinimg.com/originals/c1/53/a1/c153a1c5d9c67c36386919ffcb483651.jpg" alt="" width="300" height="200">
     </div>
-<!-- i choose this image because it thought it was funny and is artistic expression of avant garde https://i.pinimg.com/originals/c1/53/a1/c153a1c5d9c67c36386919ffcb483651.jpg -->
-    
+
     <div class="avant-garde-box">
         <p style="color: green; margin: 0;">
             ⏚⌰⍜⍀⌿ ☌⌰⍜⍀⌿ ⏚⌰⟒⟒⌿ ⏚⌰⍜⍜⌿ ⌇⏁⍜⌿ ⏁⍀⏃⋏⌇⌰⏃⏁⟟⋏☌
-            ⏁⊑⟟⌇ ⏁⟒⌖⏁ ⏚⟟ ⎍⌇⟟⋏☌ ☌⍜⍜⌌⌰⟒ ⏚⍀⎍⊑ :⍙⟟⌰⏁⟒⎅⍜⍜⌇⟒
+            ⏁⊑⟟⌇ ⏁⟒⌖⏁ ⏚⟟ ⎍⌇⟟⋏☌ ☌⍜⍜⌌⌰⟒ ⏚⍀⎍⊑ :⍙⟟⌰⏁⟒ⅅ⍜⍜⌇⟒
         </p> 
-    </div><!-- i choose this font and centered because it and is artistic expression of avant garde -->
-<!-- i choose this image because it thought it was funny and is artistic expression of avant garde -->
-    
-    <div class="avant-garde-box">
-        <img src="https://tse3.mm.bing.net/th/id/OIP.8TG5yRm2vQlJ5qUxA9O7kgAAAA?r=0&w=250&h=204&rs=1&pid=ImgDetMain&o=7&rm=3"
-             alt="" width="300" height="200">
     </div>
-<!-- i choose this image because its a form of avant garde expression https://tse3.mm.bing.net/th/id/OIP.8TG5yRm2vQlJ5qUxA9O7kgAAAA?r=0&w=250&h=204&rs=1&pid=ImgDetMain&o=7&rm=3 -->
-    
+
+    <div class="avant-garde-box">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.8TG5yRm2vQlJ5qUxA9O7kgAAAA?r=0&w=250&h=204&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" width="300" height="200">
+    </div>
+
     <div class="avant-garde-box">
         <p style="margin: 0;">PLEAAAAAAAAAAAAAAAAAAAAAASE SPEED I NEED THIS</p>
     </div>
 
     <div class="avant-garde-box">
-        <img src="https://tse4.mm.bing.net/th/id/OIP.mkszwDgzCZ7IdjN8KxhM2QAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-             alt="" width="300" height="200">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.mkszwDgzCZ7IdjN8KxhM2QAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" width="300" height="200">
         <p style="margin: 10px 0 0 0;">fren (:</p>
     </div>
-<!-- i choose this image because it thought it was funny and is artistic expression of avant garde https://tse4.mm.bing.net/th/id/OIP.mkszwDgzCZ7IdjN8KxhM2QAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3 -->
 
     <div class="avant-garde-box">
-        <img src="https://th.bing.com/th?id=OPHS.KPi%2ftX%2blQxtf3A474C474&o=5&pid=21.1&w=117&h=192&c=7&o=7&rm=3"
-             alt="" width="300" height="200">
+        <img src="https://th.bing.com/th?id=OPHS.KPi%2ftX%2blQxtf3A474C474&o=5&pid=21.1&w=117&h=192&c=7&o=7&rm=3" alt="" width="300" height="200">
         <p style="margin: 10px 0 0 0;">oh its satan..</p>
     </div>
-<!-- i choose this image because it thought it was funny and is artistic expression of avant garde https://th.bing.com/th?id=OPHS.KPi%2ftX%2blQxtf3A474C474&o=5&pid=21.1&w=117&h=192&c=7&o=7&rm=3  -->
 
-<p>click this link how i did all of this
-<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">HTML/CSS tutorial for beginners!</a>
-<!-- i choose this because https://www.youtube.com/watch?v=dQw4w9WgXcQ is an internet classic -->
-</p> 
+    <p>click this link how i did all of this
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">HTML/CSS tutorial for beginners!</a>
+    </p>
+
+    <script>
+        function dropThePage() {
+            document.getElementById('drop-btn').style.display = 'none';
+
+            const elements = Array.from(document.querySelectorAll('body > h1, body > p, body > .avant-garde-box'));
+            const physicsObjects = [];
+
+            let draggedObj = null;
+            let dragOffsetX = 0;
+            let dragOffsetY = 0;
+            let lastMouseX = 0;
+            let lastMouseY = 0;
+            let mouseVx = 0;
+            let mouseVy = 0;
+
+            // Tracking Window Position Across Screen
+            let lastWindowX = window.screenX || window.screenLeft || 0;
+            let lastWindowY = window.screenY || window.screenTop || 0;
+
+            // Convert elements to absolute positioning
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                
+                el.style.width = rect.width + 'px';
+                el.style.height = rect.height + 'px';
+                el.style.left = rect.left + 'px';
+                el.style.top = rect.top + 'px';
+                el.classList.add('physics-element');
+
+                const obj = {
+                    element: el,
+                    x: rect.left,
+                    y: rect.top,
+                    vx: (Math.random() - 0.5) * 6,
+                    vy: Math.random() * -5,
+                    rotation: 0,
+                    vRot: (Math.random() - 0.5) * 4,
+                    width: rect.width,
+                    height: rect.height,
+                    bounciness: 0.6,
+                    isDragged: false
+                };
+
+                physicsObjects.push(obj);
+
+                // Mouse & Touch Drag Listeners
+                el.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY, obj));
+                el.addEventListener('touchstart', (e) => {
+                    const touch = e.touches[0];
+                    startDrag(touch.clientX, touch.clientY, obj);
+                }, { passive: true });
+            });
+
+            function startDrag(clientX, clientY, obj) {
+                draggedObj = obj;
+                obj.isDragged = true;
+                dragOffsetX = clientX - obj.x;
+                dragOffsetY = clientY - obj.y;
+                lastMouseX = clientX;
+                lastMouseY = clientY;
+                obj.vx = 0;
+                obj.vy = 0;
+            }
+
+            // Tracking Mouse Movement & Velocity
+            window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    handleMove(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            function handleMove(clientX, clientY) {
+                if (draggedObj) {
+                    mouseVx = clientX - lastMouseX;
+                    mouseVy = clientY - lastMouseY;
+                    draggedObj.x = clientX - dragOffsetX;
+                    draggedObj.y = clientY - dragOffsetY;
+                    lastMouseX = clientX;
+                    lastMouseY = clientY;
+                }
+            }
+
+            // Release Dragged Object
+            window.addEventListener('mouseup', releaseDrag);
+            window.addEventListener('touchend', releaseDrag);
+
+            function releaseDrag() {
+                if (draggedObj) {
+                    draggedObj.vx = mouseVx * 0.8;
+                    draggedObj.vy = mouseVy * 0.8;
+                    draggedObj.vRot = (Math.random() - 0.5) * 8;
+                    draggedObj.isDragged = false;
+                    draggedObj = null;
+                }
+            }
+
+            const gravity = 0.55;
+
+            // Physics Loop
+            function updatePhysics() {
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+
+                // Calculate Window Movement Across Monitor
+                const currentWindowX = window.screenX || window.screenLeft || 0;
+                const currentWindowY = window.screenY || window.screenTop || 0;
+
+                const windowDeltaX = currentWindowX - lastWindowX;
+                const windowDeltaY = currentWindowY - lastWindowY;
+
+                lastWindowX = currentWindowX;
+                lastWindowY = currentWindowY;
+
+                physicsObjects.forEach(obj => {
+                    // Apply Window Inertia (Moving window right pushes objects left)
+                    if (Math.abs(windowDeltaX) > 0.5 || Math.abs(windowDeltaY) > 0.5) {
+                        obj.vx -= windowDeltaX * 0.8;
+                        obj.vy -= windowDeltaY * 0.8;
+                        obj.vRot += (windowDeltaX + windowDeltaY) * 0.1; // Add spin from window motion
+                    }
+
+                    if (!obj.isDragged) {
+                        // Apply gravity
+                        obj.vy += gravity;
+
+                        // Update position & rotation
+                        obj.x += obj.vx;
+                        obj.y += obj.vy;
+                        obj.rotation += obj.vRot;
+
+                        // Floor Collision
+                        if (obj.y + obj.height >= screenHeight) {
+                            obj.y = screenHeight - obj.height;
+                            obj.vy = -obj.vy * obj.bounciness;
+                            obj.vx *= 0.85; // Floor friction
+                            obj.vRot *= 0.85;
+                        }
+
+                        // Ceiling Collision
+                        if (obj.y <= 0) {
+                            obj.y = 0;
+                            obj.vy = -obj.vy * obj.bounciness;
+                        }
+
+                        // Right Wall Collision
+                        if (obj.x + obj.width >= screenWidth) {
+                            obj.x = screenWidth - obj.width;
+                            obj.vx = -obj.vx * obj.bounciness;
+                        }
+
+                        // Left Wall Collision
+                        if (obj.x <= 0) {
+                            obj.x = 0;
+                            obj.vx = -obj.vx * obj.bounciness;
+                        }
+                    } else {
+                        // Keep within bounds while dragging
+                        obj.x = Math.max(0, Math.min(obj.x, screenWidth - obj.width));
+                        obj.y = Math.max(0, Math.min(obj.y, screenHeight - obj.height));
+                    }
+
+                    // Apply visual transformation
+                    obj.element.style.transform = `translate(${obj.x - parseFloat(obj.element.style.left)}px, ${obj.y - parseFloat(obj.element.style.top)}px) rotate(${obj.rotation}deg)`;
+                });
+
+                requestAnimationFrame(updatePhysics);
+            }
+
+            requestAnimationFrame(updatePhysics);
+        }
+    </script>
 </body>
 </html>
-<!--i choosed all of this because it is funny and also its self expression of comedy and humour and a form of artistic expression https://www.youtube.com/watch?v=dQw4w9WgXcQ -->
